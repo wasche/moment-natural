@@ -22,7 +22,7 @@
     "parse",
     "natural"
   ],
-  "license": "CC0-BY",
+  "license": "MIT",
   "dependencies": {
     "moment": "~2.8.1"
   }
