@@ -1,0 +1,29 @@
+{
+  "name": "moment-natural",
+  "version": "0.0.1",
+  "description": "A moment.js plugin to parse natural date/time strings",
+  "author": "Wil Asche <wil@asche.us>",
+  "main": "moment.natural.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wasche/moment-natural.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wasche/moment-natural/issues"
+  },
+  "homepage": "http://github.com/wasche/moment-natural",
+  "keywords": [
+    "momentjs",
+    "moment",
+    "date",
+    "parse",
+    "natural"
+  ],
+  "license": "CC0-BY",
+  "dependencies": {
+    "moment": "~2.8.1"
+  }
+}
