@@ -44,6 +44,8 @@
         o.date[word]();
       } else if ('last' === word || 'ago' === word){
         o.dir = -1;
+      } else if ('next' === word){
+        o.dir = 1;
       } else if (/(\d)([ap])m?/.test(word)){ // 3pm
         n = parseInt(RegExp.$1);
         if (RegExp.$2 === 'p') { n += 12; }
@@ -66,7 +68,7 @@
         o.unit = word;
       }
       return o;
-    }, {date: this, dir: 1});
+    }, {date: this, dir: 1, value: 1});
 
     if (o.unit && o.value){
       if (o.dir === -1){
