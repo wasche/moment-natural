@@ -18,6 +18,11 @@ describe('moment', function(){
     , {str: 'last week'         , ms: - 7*24*60*60*1000}
     , {str: '2 days ago'        , ms: - 2*24*60*60*1000}
     , {str: 'next month'        , ms:  31*24*60*60*1000+60*60*1000} // crosses DST boundary
+    , {str: 'last friday'       , ms: - 3*24*60*60*1000}
+    , {str: 'wednesday'         , ms:   2*24*60*60*1000}
+    , {str: 'this thursday'     , ms:   3*24*60*60*1000}
+    , {str: 'next tuesday'      , ms:   8*24*60*60*1000}
+    , {str: '2 sundays ago'     , ms: -15*24*60*60*1000}
     ];
 
     data.forEach(function(test){

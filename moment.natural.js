@@ -42,10 +42,14 @@
       var n;
       if (named[word]){
         o.date[word]();
+      } else if ('this' === word){
+        o.value = 0;
       } else if ('last' === word || 'ago' === word){
         o.dir = -1;
+        o.value || (o.value = 1);
       } else if ('next' === word){
         o.dir = 1;
+        o.value || (o.value = 1);
       } else if (/(\d)([ap])m?/.test(word)){ // 3pm
         n = parseInt(RegExp.$1);
         if (RegExp.$2 === 'p') { n += 12; }
@@ -65,13 +69,27 @@
       } else if (/\d+/.test(word)){
         o.value = parseInt(word);
       } else {
-        o.unit = word;
+        var ccWord = word.slice(0, 1).toUpperCase() + word.slice(1).replace(/s$/, '');
+        if (
+            moment.localeData()._weekdays.indexOf(ccWord) >= 0 ||
+            moment.localeData()._weekdaysShort.indexOf(ccWord) >= 0 ||
+            moment.localeData()._weekdaysMin.indexOf(ccWord) >= 0){
+          o.date.day(ccWord);
+          o.unit = 'weeks';
+        } else if (
+            moment.localeData()._months.indexOf(ccWord) >= 0 ||
+            moment.localeData()._monthsShort.indexOf(ccWord) >= 0){
+          o.date.month(ccWord);
+          o.unit = 'months';
+        } else {
+          o.unit = word;
+        }
       }
       return o;
-    }, {date: this, dir: 1, value: 1});
+    }, {date: this, dir: 0, value: 0});
 
     if (o.unit && o.value){
-      if (o.dir === -1){
+      if (o.dir < 0){
         this.subtract(o.value, o.unit);
       } else {
         this.add(o.value, o.unit);
